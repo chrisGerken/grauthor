@@ -17,12 +17,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.filebuffers,
  org.eclipse.ui.forms
 Bundle-Vendor: gramar.org
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .,
  gramar-1.0.0-jar-with-dependencies.jar
 Import-Package: org.eclipse.ui.console
-Export-Package: com.gerken.xaa.nature,
- com.gerken.xaa.sme,
+Export-Package: com.gerken.xaa.sme,
  org.gramar,
  org.gramar.adaptor,
  org.gramar.ast,
@@ -35,6 +34,7 @@ Export-Package: com.gerken.xaa.nature,
  org.gramar.eclipse.ui,
  org.gramar.eclipse.ui.dialog,
  org.gramar.eclipse.ui.editors,
+ org.gramar.eclipse.ui.nature,
  org.gramar.eclipse.ui.popup.actions,
  org.gramar.eclipse.ui.util,
  org.gramar.eclipse.ui.wizards,
@@ -49,3 +49,4 @@ Export-Package: com.gerken.xaa.nature,
  org.gramar.resource,
  org.gramar.tag,
  org.gramar.util
+Bundle-ActivationPolicy: lazy

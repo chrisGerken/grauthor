@@ -144,7 +144,18 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="com.gerken.xaa.nature.RefImplNature">
+               class="org.gramar.eclipse.ui.nature.RefImplNature">
+         </run>
+      </runtime>
+   </extension>
+   
+   <extension
+         id="gramar"
+         name="Gramar Project"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.gramar.eclipse.ui.nature.GramarNature">
          </run>
       </runtime>
    </extension>

@@ -1,12 +1,12 @@
-package com.gerken.xaa.nature;
+package org.gramar.eclipse.ui.nature;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 
-public class XformNature implements IProjectNature {
+public class RefImplNature implements IProjectNature {
 
-	public XformNature() {
+	public RefImplNature() {
 	}
 
 	public void configure() throws CoreException {

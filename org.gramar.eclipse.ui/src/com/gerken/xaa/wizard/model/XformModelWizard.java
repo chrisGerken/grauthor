@@ -22,13 +22,13 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.gramar.eclipse.ui.nature.GramarNature;
 
 import com.gerken.xaa.adaptor.EclipseAdaptor;
 import com.gerken.xaa.constants.Constants;
 import com.gerken.xaa.model.prepare.Converter;
 import com.gerken.xaa.model.refimpl.ReferenceImplementation;
 import com.gerken.xaa.model.xform.Xform;
-import com.gerken.xaa.nature.XformNature;
 import com.gerken.xaa.persist.RefImplPersist;
 import com.gerken.xaa.persist.Resourcer;
 import com.gerken.xaa.sme.IXaaMentor;
@@ -124,7 +124,7 @@ public class XformModelWizard extends Wizard implements INewWizard {
 			xm[m].tweak(model);
 		}
 
-		IProject target = Resourcer.createProject(projectName,Constants.XformNatureID, monitor);
+		IProject target = Resourcer.createProject(projectName,Constants.GramarNatureID, monitor);
 
 		IFile xaa = target.getFile("xform.xform"); 
 		xaa.create(new ByteArrayInputStream(model.xmlRepresentation().getBytes()), true, monitor);

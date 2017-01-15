@@ -2,8 +2,8 @@ package com.gerken.xaa.constants;
 
 public class Constants {
 	
-	public static String RefImplNatureID = "com.gerken.xaa.refimpl";
+	public static String RefImplNatureID = "org.gramar.eclipse.ui.refimpl";
 	
-	public static String XformNatureID = "com.gerken.xaa.xform";
+	public static String GramarNatureID = "org.gramar.eclipse.ui.gramar";
 
 }

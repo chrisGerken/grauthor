@@ -20,9 +20,9 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.gramar.eclipse.ui.nature.RefImplNature;
 
 import com.gerken.xaa.constants.Constants;
-import com.gerken.xaa.nature.RefImplNature;
 
 public class RefImplChoicelWizardPage extends WizardPage {
 	
