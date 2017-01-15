@@ -314,10 +314,10 @@ public abstract class AbstractListSection extends AbstractSection implements ICo
 		public void addListener(ILabelProviderListener listener) {}
 		public void removeListener(ILabelProviderListener listener) {}
 	}
-
-	protected Shell getShell() {
-		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-	}
+//
+//	protected Shell getShell() {
+//		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+//	}
 
 	public String getSourceExpression() {
 		return null;

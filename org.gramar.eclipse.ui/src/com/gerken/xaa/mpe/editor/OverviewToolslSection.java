@@ -49,64 +49,64 @@ public class OverviewToolslSection extends AbstractToolSection implements IHyper
 
 //		if (href.equals("invoke.xaa.xform")) {
 //			if (getPage().getMpeEditor().getConstraintManager().getCurrentProblems().size() > 0) {
-//				boolean goon = MessageDialog.openConfirm(new Shell(),"Errors Exist in Model","Errors in the model may cause the generation to fail.  Do you wish to continue?");
+//				boolean goon = MessageDialog.openConfirm(getShell(),"Errors Exist in Model","Errors in the model may cause the generation to fail.  Do you wish to continue?");
 //				if (!goon) { return; }
 //			}
 //			try {
 //				String patternId = ModelAccess.getAttribute(getModel(), "/xform/@xformId");
-//				boolean goon = MessageDialog.openConfirm(new Shell(),"Begin Generation","Generate "+patternId+" xform?");
+//				boolean goon = MessageDialog.openConfirm(getShell(),"Begin Generation","Generate "+patternId+" xform?");
 //				if (!goon) { return; }
 //					// Begin pattern invoke sample.xform
 //				String contents = ModelFormatter.getInstance().format(getModel());
 //				IStatus status = JET2Platform.runTransformOnString("com.gerken.xaa.xform", contents, new NullProgressMonitor());
 //				if ((status.getSeverity() == IStatus.OK) | (status.getSeverity() == IStatus.INFO)) {
-//					MessageDialog.openInformation(new Shell(),"Pattern successfully applied",status.getMessage());
+//					MessageDialog.openInformation(getShell(),"Pattern successfully applied",status.getMessage());
 //				} else {
-//					ErrorDialog.openError(new Shell(),"Pattern applied with errors",status.getMessage(),status);
+//					ErrorDialog.openError(getShell(),"Pattern applied with errors",status.getMessage(),status);
 //				}
 //					// End pattern invoke sample.xform
 //			} catch (NullPointerException t) {
-//				MessageDialog.openInformation(new Shell(),"Missing Pattern",t.toString());
+//				MessageDialog.openInformation(getShell(),"Missing Pattern",t.toString());
 //			} catch (Throwable t) {
-//				MessageDialog.openInformation(new Shell(),"Exception thrown",t.toString());
+//				MessageDialog.openInformation(getShell(),"Exception thrown",t.toString());
 //			}
 //			return;
 //		}
 //
 //		if (href.equals("invoke.xaa.gramar")) {
 //			if (getPage().getMpeEditor().getConstraintManager().getCurrentProblems().size() > 0) {
-//				boolean goon = MessageDialog.openConfirm(new Shell(),"Errors Exist in Model","Errors in the model may cause the generation to fail.  Do you wish to continue?");
+//				boolean goon = MessageDialog.openConfirm(getShell(),"Errors Exist in Model","Errors in the model may cause the generation to fail.  Do you wish to continue?");
 //				if (!goon) { return; }
 //			}
 //			try {
 //				String patternId = ModelAccess.getAttribute(getModel(), "/xform/@xformId");
-//				boolean goon = MessageDialog.openConfirm(new Shell(),"Begin Generation","Generate "+patternId+" gramar?");
+//				boolean goon = MessageDialog.openConfirm(getShell(),"Begin Generation","Generate "+patternId+" gramar?");
 //				if (!goon) { return; }
 //					// Begin pattern invoke sample.xform
 //				String contents = ModelFormatter.getInstance().format(getModel());
 //				IStatus status = JET2Platform.runTransformOnString("com.gerken.xaa.gramar.xform", contents, new NullProgressMonitor());
 //				if ((status.getSeverity() == IStatus.OK) | (status.getSeverity() == IStatus.INFO)) {
-//					MessageDialog.openInformation(new Shell(),"Pattern successfully applied",status.getMessage());
+//					MessageDialog.openInformation(getShell(),"Pattern successfully applied",status.getMessage());
 //				} else {
-//					ErrorDialog.openError(new Shell(),"Pattern applied with errors",status.getMessage(),status);
+//					ErrorDialog.openError(getShell(),"Pattern applied with errors",status.getMessage(),status);
 //				}
 //					// End pattern invoke sample.xform
 //			} catch (NullPointerException t) {
-//				MessageDialog.openInformation(new Shell(),"Missing Pattern",t.toString());
+//				MessageDialog.openInformation(getShell(),"Missing Pattern",t.toString());
 //			} catch (Throwable t) {
-//				MessageDialog.openInformation(new Shell(),"Exception thrown",t.toString());
+//				MessageDialog.openInformation(getShell(),"Exception thrown",t.toString());
 //			}
 //			return;
 //		}
 
 		if (href.equals("invoke.xaa.gramar2")) {
 			if (getPage().getMpeEditor().getConstraintManager().getCurrentProblems().size() > 0) {
-				boolean goon = MessageDialog.openConfirm(new Shell(),"Errors Exist in Model","Errors in the model may cause the generation to fail.  Do you wish to continue?");
+				boolean goon = MessageDialog.openConfirm(getShell(),"Errors Exist in Model","Errors in the model may cause the generation to fail.  Do you wish to continue?");
 				if (!goon) { return; }
 			}
 			try {
 				String gramarId = ModelAccess.getAttribute(getModel(), "/xform/@xformId");
-				boolean goon = MessageDialog.openConfirm(new Shell(),"Begin Generation","Generate "+gramarId+" gramar?");
+				boolean goon = MessageDialog.openConfirm(getShell(),"Begin Generation","Generate "+gramarId+" gramar?");
 				if (!goon) { return; }
 					// Begin pattern invoke sample.xform
 
@@ -119,25 +119,25 @@ public class OverviewToolslSection extends AbstractToolSection implements IHyper
 
 				if (!status.hadErrors()) {
 					String msg = "Model accessed "+status.getModelAccesses()+" times.";  
-					MessageDialog.openInformation(new Shell(),"Gramar successfully generated", "See log for details");
+					MessageDialog.openInformation(getShell(),"Gramar successfully generated", "See log for details");
 					MultiStatus ms = StatusFactory.status(status.getContext(), 0, "Gramar applied successfully");
 //					Activator.getDefault().getLog().log(ms);
 				} else {
 					MultiStatus ms = StatusFactory.status(status.getContext(), 0, "Gramar applied with errors");
 					String content = status.mainProductionResult();
-					ErrorDialog.openError(new Shell(),"Gramar applied with errors",ms.getMessage(),ms);
+					ErrorDialog.openError(getShell(),"Gramar applied with errors",ms.getMessage(),ms);
 				}
 					// End pattern invoke sample.xform
 			} catch (NullPointerException t) {
-				MessageDialog.openInformation(new Shell(),"Missing Pattern",t.toString());
+				MessageDialog.openInformation(getShell(),"Missing Pattern",t.toString());
 			} catch (Throwable t) {
-				MessageDialog.openInformation(new Shell(),"Exception thrown",t.toString());
+				MessageDialog.openInformation(getShell(),"Exception thrown",t.toString());
 			}
 			return;
 		}
 
 		if (href.equals("purposes.to.tokens")) {
-			boolean confirm = MessageDialog.openConfirm(new Shell(),"Build Tokens","Do you wish to build tokens from selected purposes?");
+			boolean confirm = MessageDialog.openConfirm(getShell(),"Build Tokens","Do you wish to build tokens from selected purposes?");
 			if (!confirm) { return; }
 			purposesToTokens();			
 			return;

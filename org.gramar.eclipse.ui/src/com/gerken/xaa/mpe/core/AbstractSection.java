@@ -1,6 +1,7 @@
 package com.gerken.xaa.mpe.core;
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.forms.SectionPart;
 import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -13,7 +14,8 @@ import org.w3c.dom.Text;
 public abstract class AbstractSection extends SectionPart {
 
 	private AbstractFormPage 	page;
-	private Node			sourceNode;
+	private Node				sourceNode;
+	private Composite			mpeParent;
 	
 	public AbstractSection(AbstractFormPage page, Composite parent) {
 		super(parent, page.getEditor().getToolkit(), Section.DESCRIPTION | 
@@ -21,6 +23,7 @@ public abstract class AbstractSection extends SectionPart {
 														ExpandableComposite.TWISTIE  | 
 														ExpandableComposite.EXPANDED );
 		this.page = page;
+		this.mpeParent = parent;
 		initialize(page.getManagedForm());
 		getSection().clientVerticalSpacing = 4;
 		getSection().setData("part", this); //$NON-NLS-1$
@@ -35,6 +38,10 @@ public abstract class AbstractSection extends SectionPart {
 
 	protected void commit() {
 		refresh();
+	}
+	
+	public Shell getShell() {
+		return mpeParent.getShell();
 	}
 	
 	public void refreshSelected() {}
