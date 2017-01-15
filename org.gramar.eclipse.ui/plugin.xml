@@ -208,7 +208,7 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <category
-            name="Advanced Xform Authoring"
+            name="Gramar Authoring"
             id="com.gerken.xaa.wizard">
       </category>
       <wizard
@@ -240,7 +240,7 @@
             id="com.gerken.xaa.wizard.refimpl.MonolithExemplarWizard">
       </wizard>
       <wizard
-            name="Xform Model"
+            name="Gramar Model"
             icon="icons/sample.gif"
             category="com.gerken.xaa.wizard"
             class="com.gerken.xaa.wizard.model.XformModelWizard"

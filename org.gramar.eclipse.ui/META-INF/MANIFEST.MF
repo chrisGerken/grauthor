@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.ui,
 Bundle-Vendor: gramar.org
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .,
- gramar-1.0.0-jar-with-dependencies.jar
+ gramar-1.0.0-jar-with-dependencies.jar,
+ gramars/com.gerken.xaa.gramar.gramar-1.0.0.jar
 Import-Package: org.eclipse.ui.console
 Export-Package: com.gerken.xaa.sme,
  org.gramar,
