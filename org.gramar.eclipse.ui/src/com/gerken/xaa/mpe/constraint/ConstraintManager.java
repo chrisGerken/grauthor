@@ -158,4 +158,8 @@ public class ConstraintManager {
 		return problems;
 	}
 
+	public void resetProblems() {
+		problems = new ArrayList<ConstraintFailure>();
+	}
+
 }

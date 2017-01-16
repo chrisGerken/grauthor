@@ -26,6 +26,7 @@ public class XaaEditor extends FormEditor {
 	private	Document 			modelDoc;
 	private ConstraintManager	constraintManager = new ConstraintManager();
 	private	int					sourcePageIndex;
+	private boolean				validateModel = true;
 	
 	private	OverviewPage	overviewPage;
 	private	GroupPage	groupPage;
@@ -184,11 +185,16 @@ public class XaaEditor extends FormEditor {
 		return domainPolymorphicKeys;
 	}
 	
-
 	public void propertyChanged(Node target, String field) {
 		if (target == null) { return; }
-		constraintManager.modelChanged(getModel());
+		if (validateModel) {
+			constraintManager.modelChanged(getModel());
+		}
 		Activator.getXformAccess().setModel(getXformProject(),getXformNode()); 
+	}
+	
+	public void forceValidation() {
+		constraintManager.modelChanged(getModel());
 	}
 
 	public void elementAdded(Node target) {
@@ -232,6 +238,13 @@ public class XaaEditor extends FormEditor {
 
 		// Begin custom editor logic
 		
+	public boolean getValidateModel() {
+		return validateModel;
+	}
+	
+	public void toggleValidateModel() {
+		validateModel = !validateModel;
+	}
 		// End custom editor logic
 	
 }

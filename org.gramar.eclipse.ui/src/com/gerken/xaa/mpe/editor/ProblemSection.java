@@ -25,6 +25,11 @@ public class ProblemSection extends AbstractToolSection implements IConstraintLi
 
 		StringBuffer sb = new StringBuffer();
 	
+		if (!getPage().getMpeEditor().getValidateModel()) {
+			sb.append("<form><li></li><li style=\"text\" bindent=\"5\">Model validation has been turned off.</li></form>");
+			return sb.toString();
+		}
+		
 		problems = getPage().getMpeEditor().getConstraintManager().getCurrentProblems();
 		sb.append("<form>");
 
@@ -102,7 +107,10 @@ public class ProblemSection extends AbstractToolSection implements IConstraintLi
 
 	@Override
 	public void loadFrom(Node source) {
-		getPage().getMpeEditor().modelChanged();
+		
+		if (getPage().getMpeEditor().getValidateModel()) {
+			getPage().getMpeEditor().modelChanged();
+		}
 		
 
 		super.loadFrom(source);

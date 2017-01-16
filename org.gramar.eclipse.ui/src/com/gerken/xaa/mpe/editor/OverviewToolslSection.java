@@ -33,11 +33,19 @@ public class OverviewToolslSection extends AbstractToolSection implements IHyper
 	public String getTextContent() {
 
 		String patternId = ModelAccess.getAttribute(getModel(), "/xform/@xformId");
+		String thisValidationSetting = "on";
+		String nextValidationSetting = "off";
+		boolean validate = getPage().getMpeEditor().getValidateModel();
+		if (!validate) {
+			thisValidationSetting = "off";
+			nextValidationSetting = "on";
+		}
+		
 		String content = "<form>" +
 							"<li style=\"text\" bindent=\"5\"><a href=\"purposes.to.tokens\">Build tokens</a> for selected purposes</li>" +
 //							"<li style=\"text\" bindent=\"5\"><a href=\"invoke.xaa.xform\">Generate</a> "+patternId+" xform</li>" +
-//							"<li style=\"text\" bindent=\"5\"><a href=\"invoke.xaa.gramar\">Generate</a> "+patternId+" gramar</li>" +
 							"<li style=\"text\" bindent=\"5\"><a href=\"invoke.xaa.gramar2\">Generate</a> "+patternId+" gramar</li>" +
+							"<li style=\"text\" bindent=\"5\">Model validation is "+thisValidationSetting+".  Turn it <a href=\"toggle.validation\">"+nextValidationSetting+"</a> </li>" +
 							"</form>";
 
 		return content;
@@ -106,7 +114,12 @@ public class OverviewToolslSection extends AbstractToolSection implements IHyper
 			}
 			try {
 				String gramarId = ModelAccess.getAttribute(getModel(), "/xform/@xformId");
-				boolean goon = MessageDialog.openConfirm(getShell(),"Begin Generation","Generate "+gramarId+" gramar?");
+				boolean goon = false;
+				if (getPage().getMpeEditor().getValidateModel()) {
+					goon = MessageDialog.openConfirm(getShell(),"Begin Generation","Generate "+gramarId+" gramar?");
+				} else {
+					goon = MessageDialog.openConfirm(getShell(),"Model validation is off","Generate "+gramarId+" gramar even though model is not validated?");
+				}
 				if (!goon) { return; }
 					// Begin pattern invoke sample.xform
 
@@ -140,6 +153,18 @@ public class OverviewToolslSection extends AbstractToolSection implements IHyper
 			boolean confirm = MessageDialog.openConfirm(getShell(),"Build Tokens","Do you wish to build tokens from selected purposes?");
 			if (!confirm) { return; }
 			purposesToTokens();			
+			return;
+		}
+
+		if (href.equals("toggle.validation")) {
+			getPage().getMpeEditor().toggleValidateModel();
+			if (getPage().getMpeEditor().getValidateModel()) {
+				getPage().getMpeEditor().forceValidation();
+			} else {
+				getPage().getMpeEditor().getConstraintManager().resetProblems();
+			}
+//			refresh();
+			((OverviewPage)getPage()).markStale();
 			return;
 		}
 
