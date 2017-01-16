@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Gramar for Eclipse
 Bundle-SymbolicName: org.gramar.eclipse.ui; singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.gramar.eclipse.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.filebuffers,
  org.eclipse.ui.forms
 Bundle-Vendor: gramar.org
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
  gramar-1.0.0-jar-with-dependencies.jar,
  gramars/com.gerken.xaa.gramar.gramar-1.0.0.jar

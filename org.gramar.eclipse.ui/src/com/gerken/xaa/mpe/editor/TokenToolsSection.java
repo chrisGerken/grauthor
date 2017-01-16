@@ -41,7 +41,7 @@ public class TokenToolsSection extends AbstractToolSection implements IHyperlink
 	}
 
 	private void tokenReplacements() {
-		TokenReplacementsDialog trd = new TokenReplacementsDialog(new Shell());
+		TokenReplacementsDialog trd = new TokenReplacementsDialog(getShell());
 		trd.setBlockOnOpen(true);
 		trd.open();
 		if (trd.getReturnCode() == Dialog.OK) {

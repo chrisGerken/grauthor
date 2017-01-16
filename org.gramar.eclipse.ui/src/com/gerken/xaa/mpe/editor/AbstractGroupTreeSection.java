@@ -67,7 +67,7 @@ public abstract class AbstractGroupTreeSection extends AbstractTreeSection {
 				TreeSelection ts = (TreeSelection) nodesViewer.getSelection();
 				Node  node = (Node) ts.getFirstElement();
 				if (node == null) { return; }
-				NewGroupDialog ngd = new NewGroupDialog(new Shell());
+				NewGroupDialog ngd = new NewGroupDialog(getShell());
 				ngd.setBlockOnOpen(true);
 				if (ngd.open() == ngd.OK) {
 					Element kid = node.getOwnerDocument().createElement("group");

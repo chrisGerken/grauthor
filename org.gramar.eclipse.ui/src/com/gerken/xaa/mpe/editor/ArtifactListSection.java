@@ -201,7 +201,7 @@ public class ArtifactListSection extends AbstractListSection implements
 	}
 
 	protected void moveNode() {
-		DestinationGroupDialog dgd = new DestinationGroupDialog(new Shell(),
+		DestinationGroupDialog dgd = new DestinationGroupDialog(getShell(),
 				getSourceNode());
 		dgd.setBlockOnOpen(true);
 		if (dgd.open() == dgd.OK) {

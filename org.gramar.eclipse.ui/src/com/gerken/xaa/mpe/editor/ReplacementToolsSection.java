@@ -45,7 +45,7 @@ public class ReplacementToolsSection extends AbstractToolSection implements IHyp
 		Element replacement = (Element) getSourceNode();
 		Node xform = replacement.getParentNode();
 
-		TokenFromReplacementDialog tfrd = new TokenFromReplacementDialog(new Shell(),xform);
+		TokenFromReplacementDialog tfrd = new TokenFromReplacementDialog(getShell(),xform);
 		tfrd.setBlockOnOpen(true);
 		tfrd.open();
 		if (tfrd.getReturnCode() == Dialog.OK) {

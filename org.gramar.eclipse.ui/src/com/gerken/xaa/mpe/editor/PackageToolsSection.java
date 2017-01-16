@@ -41,11 +41,11 @@ public class PackageToolsSection extends AbstractToolSection implements IHyperli
 
 
 		if (getPage().getMpeEditor().getConstraintManager().getCurrentProblems().size() > 0) {
-			boolean goon = MessageDialog.openConfirm(new Shell(),"Errors Exist in Model","Errors in the model may cause this action to fail.  Do you wish to continue?");
+			boolean goon = MessageDialog.openConfirm(getShell(),"Errors Exist in Model","Errors in the model may cause this action to fail.  Do you wish to continue?");
 			if (!goon) { return; }
 		}
 		try {
-			boolean goon = MessageDialog.openConfirm(new Shell(),"Begin Action","Create tokens?");
+			boolean goon = MessageDialog.openConfirm(getShell(),"Begin Action","Create tokens?");
 			if (!goon) { return; }
 			
 			Node group = ModelAccess.getNodes(getModel(), "/xform/group[@id=\""+href+"\"]")[0];
