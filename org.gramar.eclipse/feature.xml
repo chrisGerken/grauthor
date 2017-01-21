@@ -88,4 +88,11 @@ Unless required by applicable law or agreed to in writing, software distributed 
          version="1.0.0.qualifier"
          unpack="false"/>
 
+   <plugin
+         id="com.gerken.xaa"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
 </feature>
