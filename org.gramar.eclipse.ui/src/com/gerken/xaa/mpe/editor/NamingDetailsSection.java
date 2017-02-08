@@ -562,7 +562,7 @@ public class NamingDetailsSection extends AbstractDetailsSection implements ICon
 		ConstraintSet cs = new ConstraintSet(XaaEditor.Section_NamingDetails);
 		cs.addConstraint(new Constraint("purpose",Constraint.CONSTRAINT_REQUIRED));
 		cs.addConstraint(new Constraint("purpose",Constraint.CONSTRAINT_NAME));
-//		cs.addConstraint(new Constraint("project",Constraint.CONSTRAINT_REQUIRED));
+		cs.addConstraint(new Constraint("purpose",Constraint.CONSTRAINT_SRC_OR_TEMPLATE_EXISTS));
 		cs.addConstraint(new Constraint("projectExpr",Constraint.CONSTRAINT_REQUIRED_IF_PROJECT));
 		cs.addConstraint(new Constraint("projectExpr",Constraint.CONSTRAINT_CONTAINS_XPATH));
 		cs.addConstraint(new Constraint("folderExpr",Constraint.CONSTRAINT_CONTAINS_XPATH));

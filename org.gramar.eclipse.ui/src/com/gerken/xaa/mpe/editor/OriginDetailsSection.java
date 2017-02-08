@@ -84,9 +84,9 @@ public class OriginDetailsSection extends AbstractDetailsSection implements ICon
 			public void modifyText(ModifyEvent arg0) {
 				if (_loading) { return; }
 				value_oLocation = widget_oLocation.getText();
-				setAttribute(getSourceNode(),"oLocation",value_oLocation);
+				setAttribute(getSourceNode(),"src",value_oLocation);
 				markDirty();
-				getPage().getMpeEditor().propertyChanged(getSourceNode(),"oLocation");
+				getPage().getMpeEditor().propertyChanged(getSourceNode(),"src");
 			}
 		});
 
@@ -138,7 +138,7 @@ public class OriginDetailsSection extends AbstractDetailsSection implements ICon
 	public void loadFrom(Node source) {
 		_loading = true;
 		setSourceNode(source);
-		value_oLocation = ModelAccess.getAttribute(getSourceNode(),"@oLocation");
+		value_oLocation = ModelAccess.getAttribute(getSourceNode(),"@src");
 		value_oPath = ModelAccess.getAttribute(getSourceNode(),"@oPath");
 
 		updateScreen();
@@ -182,6 +182,8 @@ public class OriginDetailsSection extends AbstractDetailsSection implements ICon
 	public static ConstraintSet getConstraintSet() {
 		ConstraintSet cs = new ConstraintSet(XaaEditor.Section_OriginDetails);
 		cs.addConstraint(new Constraint("oPath",Constraint.CONSTRAINT_REQUIRED));
+		cs.addConstraint(new Constraint("src",Constraint.CONSTRAINT_REQUIRED));
+		cs.addConstraint(new Constraint("src",Constraint.CONSTRAINT_SRC_OR_TEMPLATE_EXISTS));
 		return cs;
 	}
 	

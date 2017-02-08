@@ -2,6 +2,8 @@ package com.gerken.xaa.mpe.constraint;
 
 import java.util.StringTokenizer;
 
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.w3c.dom.Node;
 
 import com.gerken.xaa.mpe.core.ModelAccess;
@@ -22,6 +24,7 @@ public class Constraint {
 	public static int CONSTRAINT_REQUIRED_IF_FILE = 14;
 	public static int CONSTRAINT_LEADING_SLASH_REQUIRED = 15;
 	public static int CONSTRAINT_REQUIRED_IF_POLYMORPHIC_SINGLETON = 16;
+	public static int CONSTRAINT_SRC_OR_TEMPLATE_EXISTS = 17;
 	
 	private String 	field = null;
 	private int		type;
@@ -167,6 +170,22 @@ public class Constraint {
 				if (value == null) { value = ""; }
 				if ("true".equalsIgnoreCase(ModelAccess.getAttribute(target, "@polymorphicSingleton")) && (value.trim().length() == 0)) {
 					getOwner().addFailure(ConstraintFailure.error(target,"Field "+getField()+" must be entered. when 'Polymorphic Singleton' is checked"));
+				}
+				return;
+			} 
+			if (type == CONSTRAINT_SRC_OR_TEMPLATE_EXISTS) {
+				if (target.getNodeName().equals("createFile")) {
+					String value = ModelAccess.getAttribute(target,"@src");
+					if (value == null) { value = ""; }
+					boolean srcExists = ResourcesPlugin.getWorkspace().getRoot().exists(new Path(value));
+					String id = ModelAccess.getAttribute(target,"/xform/@xformId");
+					String group = ModelAccess.getAttribute(target,"../@name");
+					String purpose = ModelAccess.getAttribute(target,"@purpose");
+					String template = id + "/src/main/resources/" + id.replace('.', '/') + "/templates/" + group + "/" + purpose + ".prod"; 
+					boolean prodExists = ResourcesPlugin.getWorkspace().getRoot().exists(new Path(template));
+					if (!srcExists && !prodExists) {
+				 		getOwner().addFailure(ConstraintFailure.error(target,"At least one of the reference implementation "+value+" and template "+template+" must exist"));
+					}
 				}
 				return;
 			} 
