@@ -76,10 +76,12 @@ public class EclipseWorkspaceGramar extends Gramar implements IGramar {
 		IResource[] member = dir.members();
 		for (IResource rsrc: member) {
 			if (rsrc.getType() == IResource.FOLDER) {
-				if (findConfig((IContainer)rsrc)) {
-					return true;
-				}
-			}
+				if (!rsrc.getName().equalsIgnoreCase("bin")) {
+					if (findConfig((IContainer)rsrc)) {
+						return true;
+					}
+				}	
+			} 
 			if (rsrc.getType() == IResource.FILE) {
 				IFile file = (IFile) rsrc;
 				if (file.getName().equalsIgnoreCase("gramar.config")) {

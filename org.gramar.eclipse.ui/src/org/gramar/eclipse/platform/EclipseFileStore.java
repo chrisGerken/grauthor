@@ -137,6 +137,8 @@ public class EclipseFileStore extends FileStore implements IFileStore {
 			}
 		} catch (CoreException e) {
 			throw new NoSuchResourceException(path,e);
+		} catch (IOException e) {
+			throw e;
 		}
 	}
 
